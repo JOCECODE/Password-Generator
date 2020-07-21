@@ -130,7 +130,7 @@ function generatePassword() {
     console.log(result);
     console.log(CharOffset);
   }
-  for (var i = 0; i < PassAmount; i++) {
+  for (var i = 0; i < PassAmount - CharOffset; i++) {
     result += custom[Math.floor(Math.random() * custom.length)];
   }
   return result;
