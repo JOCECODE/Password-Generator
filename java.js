@@ -118,6 +118,20 @@ function generatePassword() {
   }
   return result;
 }
-
+// FUNCTION TO CHECK PASSWORD
+// function CheckPassword(result)
+// {
+// var AllCriteria=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+// if(result.value.match(decimal))
+// {
+// alert('Correct, try another...')
+// return true;
+// }
+// else
+// {
+// alert('Wrong...!')
+// return false;
+// }
+// }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
