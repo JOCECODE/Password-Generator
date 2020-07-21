@@ -5,7 +5,7 @@ var special;
 var uppercase;
 var lowercase;
 var generateBtn = document.querySelector("#generate");
-var letArray = [
+var lowArray = [
   "a",
   "b",
   "c",
@@ -36,10 +36,34 @@ var letArray = [
 var numArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var speArray = ["!", "@", "#", "$", "%", "&", "*", "?"];
 var result = "";
-
-// function isNumber(val) {
-// return (val >=0 || val < 0);
-// }
+var upperCaseArray = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+var custom = [];
 
 // PROMPT FUNCTION ON LOAD
 function promptSeq() {
@@ -72,20 +96,26 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  generateBtn.disabled = true;
 }
 
 // GENERATE PASSWORD
 function generatePassword() {
-  for (var i = 0; i < PassAmount; i++) {
-    if (num === true) {
-      result += letArray.concat(numArray)[
-        Math.floor(Math.random() * letArray.concat(numArray).length)
-      ];
-    } else {
-    }
+  if (num == true) {
+    custom = custom.concat(numArray);
   }
-  console.log(result);
-  console.log(PassAmount);
+  if (special == true) {
+    custom = custom.concat(speArray);
+  }
+  if (uppercase == true) {
+    custom = custom.concat(upperCaseArray);
+  }
+  if (lowercase == true) {
+    custom = custom.concat(lowArray);
+  }
+  for (var i = 0; i < PassAmount; i++) {
+    result += custom[Math.floor(Math.random() * custom.length)];
+  }
   return result;
 }
 
