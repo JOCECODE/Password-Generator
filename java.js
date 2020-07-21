@@ -1,12 +1,9 @@
-// Assignment Code
-var PassAmount = parseInt(
-  prompt("How long do you want your password?", "Number value from 8-128")
-);
-var num = confirm("Do you want a number?");
-console.log(num);
-// var special = confirm("Do you want any special characters");
-// var uppercase = confirm("Do you want uppercase");
-// var lowercase = confirm("Do you want any lowercase");
+// GLOBAL VARIABLES
+var PassAmount;
+var num;
+var special;
+var uppercase;
+var lowercase;
 var generateBtn = document.querySelector("#generate");
 var letArray = [
   "a",
@@ -40,6 +37,31 @@ var numArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var speArray = ["!", "@", "#", "$", "%", "&", "*", "?"];
 var result = "";
 
+// function isNumber(val) {
+// return (val >=0 || val < 0);
+// }
+
+// PROMPT FUNCTION ON LOAD
+function promptSeq() {
+  PassAmount = parseInt(
+    prompt("How long do you want your password?", "Number value from 8-128")
+  );
+  do {
+    num = confirm("Do you want a number?");
+    special = confirm("Do you want any special characters");
+    uppercase = confirm("Do you want uppercase");
+    lowercase = confirm("Do you want any lowercase");
+  } while (
+    num == false &&
+    special == false &&
+    uppercase == false &&
+    lowercase == false
+  );
+}
+
+// PROMPT SEQUENCE WHEN PAGE LOADS
+window.addEventListener("load", promptSeq);
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -49,6 +71,7 @@ function writePassword() {
   passwordText.value = password;
 }
 
+// GENERATE PASSWORD
 function generatePassword() {
   for (var i = 0; i < PassAmount; i++) {
     if (num === true) {
@@ -56,54 +79,12 @@ function generatePassword() {
         Math.floor(Math.random() * letArray.concat(numArray).length)
       ];
     } else {
-      result += letArray[Math.floor(Math.random() * letArray.length)];
     }
   }
+  console.log(result);
+  console.log(PassAmount);
   return result;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// import java.util.ArrayList;
-
-// public class MyClass {
-//   public static void main(String[] args) {
-//     ArrayList<String> cars = new ArrayList<String>();
-//     cars.add("Volvo");
-//     cars.add("BMW");
-//     cars.add("Ford");
-//     cars.add("Mazda");
-//     System.out.println(cars);
-//   }
-// }
-
-// function makeid(length) {
-//    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//    var charactersLength = characters.length;
-//    for ( var i = 0; i < length; i++ ) {
-//       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-//    }
-//    return result;
-// }
-
-// console.log(makeid(12));
-
-// var text = "";
-// var i;
-// for (i = 0; i < 5; i++) {
-//   text += "The number is " + i + "<br>";
-// }
-// document.getElementById("demo").innerHTML = text;
-
-// var a = parseInt("10") + "<br>";
-
-// var customerName = prompt("Please enter your name", "<name goes here>");
-
-// if (customerName!= null) {
-
-//     document.getElementById("welcome").innerHTML =
-
-//     "Hello " + customerName + "! How are you today?";
-
-// }
