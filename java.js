@@ -1,4 +1,5 @@
 // GLOBAL VARIABLES
+var CharOffset = 0;
 var PassAmount;
 var num;
 var special;
@@ -104,22 +105,30 @@ function generatePassword() {
   if (num == true) {
     custom = custom.concat(numArray);
     result += numArray[Math.floor(Math.random()) * numArray.length];
+    CharOffset++;
     console.log(result);
+    console.log(CharOffset);
   }
   if (special == true) {
     custom = custom.concat(speArray);
     result += speArray[Math.floor(Math.random()) * speArray.length];
+    CharOffset++;
     console.log(result);
+    console.log(CharOffset);
   }
   if (uppercase == true) {
     custom = custom.concat(upperCaseArray);
     result += upperCaseArray[Math.floor(Math.random()) * upperCaseArray.length];
+    CharOffset++;
     console.log(result);
+    console.log(CharOffset);
   }
   if (lowercase == true) {
     custom = custom.concat(lowArray);
     result += lowArray[Math.floor(Math.random()) * lowArray.length];
+    CharOffset++;
     console.log(result);
+    console.log(CharOffset);
   }
   for (var i = 0; i < PassAmount; i++) {
     result += custom[Math.floor(Math.random() * custom.length)];
