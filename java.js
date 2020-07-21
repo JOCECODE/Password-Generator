@@ -43,9 +43,12 @@ var result = "";
 
 // PROMPT FUNCTION ON LOAD
 function promptSeq() {
-  PassAmount = parseInt(
-    prompt("How long do you want your password?", "Number value from 8-128")
-  );
+  do {
+    PassAmount = parseInt(
+      prompt("How long do you want your password?", "Number value from 8-128")
+    );
+    console.log(PassAmount);
+  } while (PassAmount < 8 || PassAmount > 128 || isNaN(PassAmount));
   do {
     num = confirm("Do you want a number?");
     special = confirm("Do you want any special characters");
