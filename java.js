@@ -103,21 +103,41 @@ function writePassword() {
 function generatePassword() {
   if (num == true) {
     custom = custom.concat(numArray);
+    result += numArray[Math.floor(Math.random()) * numArray.length];
+    console.log(result);
   }
   if (special == true) {
     custom = custom.concat(speArray);
+    result += speArray[Math.floor(Math.random()) * speArray.length];
+    console.log(result);
   }
   if (uppercase == true) {
     custom = custom.concat(upperCaseArray);
+    result += upperCaseArray[Math.floor(Math.random()) * upperCaseArray.length];
+    console.log(result);
   }
   if (lowercase == true) {
     custom = custom.concat(lowArray);
+    result += lowArray[Math.floor(Math.random()) * lowArray.length];
+    console.log(result);
   }
   for (var i = 0; i < PassAmount; i++) {
     result += custom[Math.floor(Math.random() * custom.length)];
   }
   return result;
 }
+
+// function shuffelWord(word) {
+//   var shuffledWord = '';
+//   word = word.split('');
+//   while (word.length > 0) {
+//     shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
+//   }
+//   return shuffledWord;
+// }
+
+// document.querySelector('.word').innerHTML = shuffelWord("shuffle me");
+
 // FUNCTION TO CHECK PASSWORD
 // function CheckPassword(result)
 // {
