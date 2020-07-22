@@ -64,8 +64,16 @@ var upperCaseArray = [
   "Y",
   "Z",
 ];
-var custom = [];
 
+var custom = [];
+function shuffelWord(word) {
+  var shuffledWord = "";
+  word = word.split("");
+  while (word.length > 0) {
+    shuffledWord += word.splice((word.length * Math.random()) << 0, 1);
+  }
+  return shuffledWord;
+}
 // PROMPT FUNCTION ON LOAD
 function promptSeq() {
   do {
@@ -104,28 +112,28 @@ function writePassword() {
 function generatePassword() {
   if (num == true) {
     custom = custom.concat(numArray);
-    result += numArray[Math.floor(Math.random()) * numArray.length];
+    result += numArray[Math.floor(Math.random() * numArray.length)];
     CharOffset++;
     console.log(result);
     console.log(CharOffset);
   }
   if (special == true) {
     custom = custom.concat(speArray);
-    result += speArray[Math.floor(Math.random()) * speArray.length];
+    result += speArray[Math.floor(Math.random() * speArray.length)];
     CharOffset++;
     console.log(result);
     console.log(CharOffset);
   }
   if (uppercase == true) {
     custom = custom.concat(upperCaseArray);
-    result += upperCaseArray[Math.floor(Math.random()) * upperCaseArray.length];
+    result += upperCaseArray[Math.floor(Math.random() * upperCaseArray.length)];
     CharOffset++;
     console.log(result);
     console.log(CharOffset);
   }
   if (lowercase == true) {
     custom = custom.concat(lowArray);
-    result += lowArray[Math.floor(Math.random()) * lowArray.length];
+    result += lowArray[Math.floor(Math.random() * lowArray.length)];
     CharOffset++;
     console.log(result);
     console.log(CharOffset);
@@ -133,34 +141,12 @@ function generatePassword() {
   for (var i = 0; i < PassAmount - CharOffset; i++) {
     result += custom[Math.floor(Math.random() * custom.length)];
   }
-  return result;
+  return shuffelWord(result);
 }
 
-// function shuffelWord(word) {
-//   var shuffledWord = '';
-//   word = word.split('');
-//   while (word.length > 0) {
-//     shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
-//   }
-//   return shuffledWord;
 // }
 
 // document.querySelector('.word').innerHTML = shuffelWord("shuffle me");
 
-// FUNCTION TO CHECK PASSWORD
-// function CheckPassword(result)
-// {
-// var AllCriteria=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-// if(result.value.match(decimal))
-// {
-// alert('Correct, try another...')
-// return true;
-// }
-// else
-// {
-// alert('Wrong...!')
-// return false;
-// }
-// }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
